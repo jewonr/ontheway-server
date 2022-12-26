@@ -5,6 +5,7 @@ import Category from "../schema/Category.js";
 import Todo from "../schema/Todo.js";
 import { getLinkPreview } from "link-preview-js";
 import Scrap from "../schema/Scrap.js";
+import SerachIndex from "../schema/SerachIndex.js";
 
 const router = express.Router();
 
@@ -79,6 +80,11 @@ router.get('/get/memo', async (req, res) => {
     });
   });
   res.send(items);
+});
+
+router.get('/get/searchidx', async (req, res) => {
+  const idx = await SerachIndex.find();
+  res.send(idx[0]);
 });
 
 router.post('/update/feed', async (req, res) => {
